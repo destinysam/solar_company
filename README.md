@@ -6,9 +6,16 @@ Solar Cell Company Calculation
 
 MIT
 
-# Frappe Bench Full Setup
 
-Note:
+# Table of Contents
+
+
+- [Frappe Bench Full Setup](#frappe-bench-full-setup)
+- [Setup Solar app](#setup-solar-app)
+  
+
+
+# Frappe Bench Full Setup
 
 ## Prerequisites
 
@@ -82,6 +89,61 @@ cd frappe-bench
 ```bash
 bench new-site mysite.local --mariadb-root-password root_password
 ```
+
+## Step 8: Add site to hosts
+```bash
+sudo nano /etc/hosts
+```
+## Setup Solar app
+
+## Step 10: Get solar app
+```bash
+bench get-app solar_app https://github.com/destinysam/solar_company
+```
+
+## Step 11: Install solar app on the site
+```bash
+bench --site mysite.local install-app solar_app
+```
+
+## Step 12: Let's migrate now
+```bash
+bench --site site_name migrate
+```
+
+## Step 13: Finally,Start the server
+```bash
+bench start
+```
+
+## Step 14: Doctypes Available
+```bash
+Calculation Entry: A doctype holds calculcation entries
+Customer: A doctype holds customer entries.
+```
+
+## Step 15: API's
+```bash
+http://{{site_name}}:8000/api/method/solar_app.api.v1.tariff.get_monthly_tariff : API to fetch low tariff and high tariff for monthly based on query params year and month
+
+Query Params:
+year: str
+month: str
+
+Response:
+{
+    "message": {
+        "low_tariff": 0.0,
+        "high_tariff": 289.2
+    }
+}
+```
+
+
+Thank you
+
+
+
 
 
 
