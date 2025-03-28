@@ -1,0 +1,5 @@
+[bandit]
+skips: B101,B608
+
+# B101  - Ignore defensive `assert`s (especially useful for mypy)
+# B608  - Ignore hardcoded sql queries/expressions
